@@ -20,7 +20,7 @@ You can install this package via [Composer](http://getcomposer.org/) by running 
 composer require farhad-arjmand/lumen-hash-generator
 ```
 
-## Laravel
+## Lumen
 
 ### Setup
 
