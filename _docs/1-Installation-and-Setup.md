@@ -17,7 +17,7 @@ The package has a few system requirements:
 You can install this package via [Composer](http://getcomposer.org/) by running this command:
 
 ```bash
-composer require farhad-arjmand/lumen-hash-generator
+$ composer require farhad-arjmand/lumen-hash-generator
 ```
 
 ## Lumen
@@ -37,7 +37,7 @@ $app->register(FarhadArjmand\LumenHashGenerator\HashServiceProvider::class);
 Run the following command to publish the package config & migrations file:
 
 ```bash
-php artisan vendor:publish --provider="FarhadArjmand\LumenHashGenerator\HashServiceProvider"
+$ php artisan vendor:publish --provider="FarhadArjmand\LumenHashGenerator\HashServiceProvider"
 ```
 
 You should now have a config/hash.php file that allows you to configure the basics of this package.
@@ -46,5 +46,5 @@ You should now have a config/hash.php file that allows you to configure the basi
 To run all of your outstanding migrations, execute the `migrate` Artisan command:
 
 ```bash
-php artisan migrate
+$ php artisan migrate
 ```
