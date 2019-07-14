@@ -34,7 +34,7 @@ $app->register(FarhadArjmand\LumenHashGenerator\HashServiceProvider::class);
 
 ### Artisan commands
 
-Run the following command to publish the package config & migrations file:
+Run the following command to publish the package config file:
 
 ```bash
 $ php artisan vendor:publish --provider="FarhadArjmand\LumenHashGenerator\HashServiceProvider"
@@ -43,7 +43,7 @@ $ php artisan vendor:publish --provider="FarhadArjmand\LumenHashGenerator\HashSe
 You should now have a config/hash.php file that allows you to configure the basics of this package.
 
 ### Running Migrations
-To run all of your outstanding migrations, execute the `migrate` Artisan command:
+To create `users` table, execute the `migrate` Artisan command:
 
 ```bash
 $ php artisan migrate
