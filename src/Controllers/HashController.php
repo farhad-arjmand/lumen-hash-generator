@@ -25,17 +25,20 @@ class HashController extends Controller {
 		$raw  = config( 'hash.raw', 'hex' ) === 'binary' ? true : false;
 		$hash = hash( $algo, $data, $raw );
 
-		# Monolog
-		$log['user_id'] = $request->auth->id;
-		$log['algo']    = $algo;
+		# Log
+		if ( config( 'hash.log', true ) ) {
+			$log            = [];
+			$log['user_id'] = $request->auth->id;
+			$log['algo']    = $algo;
 
-		if( !empty($salt) ){
-			$log['salt'] = $salt;
+			if ( !empty( $salt ) ) {
+				$log['salt'] = $salt;
+			}
+
+			$log['hash'] = $hash;
+
+			monolog()->info( 'New Hash Generated.', $log );
 		}
-
-		$log['hash'] = $hash;
-
-		monolog()->info('New Hash Generated.', $log);
 
 		# Respond
 		return response()->json([
