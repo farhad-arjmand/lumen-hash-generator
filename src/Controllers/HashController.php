@@ -23,12 +23,12 @@ class HashController extends Controller {
 	{
 		# Validate Data
 		$this->validate($request, [
-			'str'     => 'required',
+			'data' => 'required',
 		]);
 
 		# generate the hash
 		$algo = config( 'hash.algo', 'sha1' );
-		$data = config( 'hash.salt' ) . $request->input( 'str' );
+		$data = config( 'hash.salt' ) . $request->input( 'data' );
 		$raw  = config( 'hash.raw', 'hex' ) === 'binary' ? true : false;
 		$hash = hash( $algo, $data, $raw );
 
