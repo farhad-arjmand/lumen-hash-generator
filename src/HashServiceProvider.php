@@ -31,7 +31,7 @@ class HashServiceProvider extends ServiceProvider {
 
 		# Load Config
 		$this->publishes([
-			$this->config_path() => config_path('hash.php'),
+			$this->config_path('hash.php') => config_path('hash.php'),
 		], 'config');
 
 	}
@@ -47,18 +47,21 @@ class HashServiceProvider extends ServiceProvider {
 		// app()->withEloquent();
 
 		# Register Config
-		$this->mergeConfigFrom($this->config_path(), 'hash');
+		app()->configure('hash'); // tell lumen to load config/hash.php
+		$this->mergeConfigFrom($this->config_path('hash.php'), 'hash');
 
 		# Register Controller
 		// $this->app->make( 'Themesfa\LumenHashGenerator\HashController' );
 	}
 
+
 	/**
-	 * Get config path
+	 * Get the package configuration path.
 	 *
+	 * @param  string $path
 	 * @return string
 	 */
-	public function config_path(){
-		return __DIR__.'/../config/hash.php';
+	public function config_path($path = '') {
+		return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . ( $path ? DIRECTORY_SEPARATOR . $path : $path );
 	}
 }
