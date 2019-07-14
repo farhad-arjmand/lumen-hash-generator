@@ -1,8 +1,6 @@
 <?php namespace FarhadArjmand\LumenHashGenerator\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 
 /**
  * Class     HashController
@@ -15,20 +13,13 @@ class HashController extends Controller {
 	/**
 	 * Generate random hash.
 	 *
-	 * @param Request $request
 	 * @return string
-	 * @throws ValidationException
 	 */
-	public function generator(Request $request)
+	public function generator()
 	{
-		# Validate Data
-		$this->validate($request, [
-			'data' => 'required',
-		]);
-
 		# generate the hash
 		$algo = config( 'hash.algo', 'sha1' );
-		$data = config( 'hash.salt' ) . $request->input( 'data' );
+		$data = config( 'hash.salt' ) . time(); // to create random hash we use time() function.
 		$raw  = config( 'hash.raw', 'hex' ) === 'binary' ? true : false;
 		$hash = hash( $algo, $data, $raw );
 
