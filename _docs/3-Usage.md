@@ -50,7 +50,7 @@
    
     {
         'token': 'your token',
-        'str'  : 'example string ...' 
+        'data' : 'example string ...' 
     }
     
 ###### Respond
