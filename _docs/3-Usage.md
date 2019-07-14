@@ -10,7 +10,7 @@
 
     POST /hash/auth/regiter
 
-####### Body
+###### Body
 
     {
         'name'    : 'John Dou',
@@ -19,7 +19,7 @@
         'password': '123456'
     }
     
-####### Respond
+###### Respond
     
     {
         'token': '...'
@@ -29,14 +29,14 @@
         
     POST /hash/auth/login
     
-####### Body
+###### Body
 
     {
         'email'   : 'Your Email',
         'password': 'Your Password',
     }
     
-####### Respond
+###### Respond
     
     {
         'token': '...'
@@ -46,14 +46,14 @@
         
     POST /hash/generator
     
-####### Body
+###### Body
    
     {
         'token': 'your token',
         'str'  : 'example string ...' 
     }
     
-####### Respond
+###### Respond
 
     {
         'hash': '...'
