@@ -1,6 +1,7 @@
 <?php namespace FarhadArjmand\LumenHashGenerator\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 /**
  * Class     HashController
@@ -15,13 +16,26 @@ class HashController extends Controller {
 	 *
 	 * @return string
 	 */
-	public function generator()
+	public function generator(Request $request)
 	{
 		# generate the hash
 		$algo = config( 'hash.algo', 'sha1' );
-		$data = config( 'hash.salt' ) . time(); // to create random hash we use time() function.
+		$salt = config( 'hash.salt' );
+		$data = $salt . time(); // to create random hash we use time() function.
 		$raw  = config( 'hash.raw', 'hex' ) === 'binary' ? true : false;
 		$hash = hash( $algo, $data, $raw );
+
+		# Monolog
+		$log['user_id'] = $request->auth->id;
+		$log['algo']    = $algo;
+
+		if( !empty($salt) ){
+			$log['salt'] = $salt;
+		}
+
+		$log['hash'] = $hash;
+
+		monolog()->info('New Hash Generated.', $log);
 
 		# Respond
 		return response()->json([
