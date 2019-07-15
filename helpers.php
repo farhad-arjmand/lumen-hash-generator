@@ -3,7 +3,7 @@
 /**
  * Helper Functions
  *
- * @package  Themesfa\LumenHashGenerator
+ * @package  FarhadArjmand\LumenHashGenerator
  * @author   Themesfa <info@themesfa.net>
  */
 

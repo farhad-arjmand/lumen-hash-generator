@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 /**
  * Class     HashController
  *
- * @package  Themesfa\LumenHashGenerator\Controllers
+ * @package  FarhadArjmand\LumenHashGenerator\Controllers
  * @author   Themesfa <info@themesfa.net>
  */
 class HashController extends Controller {

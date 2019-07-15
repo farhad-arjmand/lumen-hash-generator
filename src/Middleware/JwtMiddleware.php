@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 /**
  * Class     JwtMiddleware
  *
- * @package  Themesfa\LumenHashGenerator\Middleware
+ * @package  FarhadArjmand\LumenHashGenerator\Middleware
  * @author   Themesfa <info@themesfa.net>
  */
 class JwtMiddleware

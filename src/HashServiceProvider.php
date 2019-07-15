@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 /**
  * Class     HashServiceProvider
  *
- * @package  Themesfa\LumenHashGenerator
+ * @package  FarhadArjmand\LumenHashGenerator
  * @author   Themesfa <info@themesfa.net>
  */
 class HashServiceProvider extends ServiceProvider {
@@ -51,7 +51,7 @@ class HashServiceProvider extends ServiceProvider {
 		$this->mergeConfigFrom($this->config_path('hash.php'), 'hash');
 
 		# Register Controller
-		// $this->app->make( 'Themesfa\LumenHashGenerator\HashController' );
+		// $this->app->make( 'FarhadArjmand\LumenHashGenerator\HashController' );
 	}
 
 

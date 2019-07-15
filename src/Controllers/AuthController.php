@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 /**
  * Class     AuthController
  *
- * @package  Themesfa\LumenHashGenerator\Controllers
+ * @package  FarhadArjmand\LumenHashGenerator\Controllers
  * @author   Themesfa <info@themesfa.net>
  */
 class AuthController extends Controller
