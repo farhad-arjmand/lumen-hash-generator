@@ -50,8 +50,29 @@ class HashServiceProvider extends ServiceProvider {
 		app()->configure('hash'); // tell lumen to load config/hash.php
 		$this->mergeConfigFrom($this->config_path('hash.php'), 'hash');
 
+		#
+		$this->app->singleton('Illuminate\Contracts\Routing\ResponseFactory', function ($app) {
+			return new \Illuminate\Routing\ResponseFactory(
+				$app['Illuminate\Contracts\View\Factory'],
+				$app['Illuminate\Routing\Redirector']
+			);
+		});
+
 		# Register Controller
+		$this->app->instance('path.config', app()->basePath() . DIRECTORY_SEPARATOR . 'config');
+		$this->app->instance('path.storage', app()->basePath() . DIRECTORY_SEPARATOR . 'storage');
 		// $this->app->make( 'FarhadArjmand\LumenHashGenerator\HashController' );
+	}
+
+
+	/**
+	 * Get the package path.
+	 *
+	 * @param  string $path
+	 * @return string
+	 */
+	public function path($path = '') {
+		return __DIR__ . DIRECTORY_SEPARATOR . '..' . ( $path ? DIRECTORY_SEPARATOR . $path : $path );
 	}
 
 
@@ -62,6 +83,6 @@ class HashServiceProvider extends ServiceProvider {
 	 * @return string
 	 */
 	public function config_path($path = '') {
-		return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . ( $path ? DIRECTORY_SEPARATOR . $path : $path );
+		return $this->path( 'config' . DIRECTORY_SEPARATOR . $path );
 	}
 }

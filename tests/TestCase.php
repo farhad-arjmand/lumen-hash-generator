@@ -1,5 +1,6 @@
 <?php namespace FarhadArjmand\LumenHashGenerator\Tests;
-use Orchestra\Testbench\TestCase as BaseTestCase;
+
+use Laravel\Lumen\Testing\TestCase as BaseTestCase;
 
 /**
  * Class     TestCase
@@ -9,47 +10,33 @@ use Orchestra\Testbench\TestCase as BaseTestCase;
  */
 abstract class TestCase extends BaseTestCase
 {
-	/* -----------------------------------------------------------------
-	 |  Main Methods
-	 | -----------------------------------------------------------------
-	 */
+
 	/**
-	 * Setup the test environment.
+	 * Creates the application.
+	 *
+	 * @return \Laravel\Lumen\Application
 	 */
-	protected function setUp(): void
+	public function createApplication()
 	{
-		parent::setUp();
-		$this->loadMigrationsFrom(__DIR__ .'/../database/migrations');
+		return require __DIR__.'/../bootstrap/app.php';
 	}
+
 	/**
-	 * Get package providers.
+	 * Create a log.html file for debug results.
 	 *
-	 * @param  \Illuminate\Foundation\Application  $app
-	 *
-	 * @return array
+	 * @param string $name
+	 * @return TestCase
 	 */
-	protected function getPackageProviders($app)
-	{
-		return [
-			\FarhadArjmand\LumenHashGenerator\HashServiceProvider::class,
-		];
-	}
-	/**
-	 * Resolve application HTTP Kernel implementation.
-	 *
-	 * @param  \Illuminate\Foundation\Application  $app
-	 */
-	protected function resolveApplicationHttpKernel($app)
-	{
-		$app->singleton(\Illuminate\Contracts\Http\Kernel::class, Stubs\Http\Kernel::class);
-	}
-	/**
-	 * Define environment setup.
-	 *
-	 * @param  \Illuminate\Foundation\Application   $app
-	 */
-	protected function getEnvironmentSetUp($app)
-	{
-		//
+	public function log($name = ''){
+
+		if ( !empty( $name ) ) {
+			$name = "log.$name";
+		} else {
+			$name = 'log';
+		}
+
+		file_put_contents( __DIR__ . "/{$name}.html", $this->response->getContent() );
+
+		return $this;
 	}
 }
