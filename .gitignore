@@ -1,7 +1,4 @@
-vendor
-composer.phar
-phpunit.xml
-composer.lock
-.DS_Store
-.php_cs.cache
-.hg
+/vendor/
+/composer.lock
+/.phpunit.cache/
+/.DS_Store
