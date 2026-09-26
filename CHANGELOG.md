@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 — Unreleased
+## 2.0.0 — 2026-09-26
 
 Breaking redesign as a standalone secure-token library with an optional modern Laravel provider.
 

@@ -6,7 +6,7 @@
 
 Generate unpredictable API tokens, invitation codes and public identifiers. Use the same small library in plain PHP, a Laravel application, or a terminal.
 
-**This is the v2 development rewrite, not a tagged release.** The Composer package keeps its historical name, `farhad-arjmand/lumen-hash-generator`. It now generates random **tokens**, rather than hashing the current time. The legacy HTTP/JWT API is removed; read the [migration guide](UPGRADING.md) before upgrading.
+**Version 2 is a breaking rewrite.** The Composer package keeps its historical name, `farhad-arjmand/lumen-hash-generator`. It now generates random **tokens**, rather than hashing the current time. The legacy HTTP/JWT API is removed; read the [migration guide](UPGRADING.md) before upgrading.
 
 ```php
 use FarhadArjmand\LumenHashGenerator\TokenGenerator;
@@ -31,13 +31,19 @@ $valid = $hasher->verify($token, $digest);     // Constant-time digest compariso
 - Integrates with Laravel through dependency injection and a namespaced configuration file.
 - Does not create users, register HTTP routes, run migrations, log tokens or change application authentication.
 
-## Install the development version
+## Installation
 
-Until a v2 tag is published, explicitly opt into the rewrite branch in a test project:
+Install the stable v2 series:
+
+```sh
+composer require 'farhad-arjmand/lumen-hash-generator:^2.0'
+```
+
+If Packagist has not indexed the new tag yet, add the repository directly and repeat the command:
 
 ```sh
 composer config repositories.hash-generator vcs https://github.com/farhad-arjmand/lumen-hash-generator
-composer require 'farhad-arjmand/lumen-hash-generator:dev-rewrite/secure-token-library'
+composer require 'farhad-arjmand/lumen-hash-generator:^2.0'
 ```
 
 Requirements: PHP 8.2–8.5. The optional provider is tested with Laravel 12 (PHP 8.2+) and Laravel 13 (PHP 8.3+). Laravel 5 and the old Lumen HTTP API are not supported by this rewrite. The core can be called directly from other frameworks, including modern Lumen installations; no Lumen integration is claimed or tested.

@@ -1,6 +1,6 @@
 # Migrating from the legacy package to the v2 rewrite
 
-This is a breaking rewrite. Do not replace the old package in a production application without an application-level migration and rollback plan. No v2 release has been tagged yet.
+This is a breaking rewrite. Do not replace the old package in a production application without an application-level migration and rollback plan. Install the v2 series explicitly with the `^2.0` Composer constraint.
 
 ## Removed behavior
 
