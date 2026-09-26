@@ -1,0 +1,2 @@
+providers:
+  - FarhadArjmand\LumenHashGenerator\HashServiceProvider

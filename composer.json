@@ -1,7 +1,14 @@
 {
     "name": "farhad-arjmand/lumen-hash-generator",
-    "description": "Monolithic RESTful API for producing random hash.",
-    "keywords": [ "hash", "api", "laravel", "lumen", "php"],
+    "description": "Cryptographically secure tokens and public identifiers for PHP, with optional Laravel integration.",
+    "keywords": [
+        "token",
+        "random",
+        "identifier",
+        "security",
+        "laravel",
+        "php"
+    ],
     "homepage": "https://github.com/farhad-arjmand/lumen-hash-generator",
     "license": "MIT",
     "type": "library",
@@ -14,26 +21,22 @@
         }
     ],
     "require": {
-        "php": ">=7.1.3",
-        "firebase/php-jwt": "^5.0",
-        "monolog/monolog": "^1.24"
+        "php": "^8.2"
     },
-	"require-dev": {
-        "phpunit/phpunit":     "~7.0|~8.0"
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "orchestra/testbench": "^10.0 || ^11.0"
     },
     "autoload": {
         "psr-4": {
             "FarhadArjmand\\LumenHashGenerator\\": "src/"
-        },
-        "files": [
-            "helpers.php"
-        ]
+        }
     },
-	"autoload-dev": {
+    "autoload-dev": {
         "psr-4": {
             "FarhadArjmand\\LumenHashGenerator\\Tests\\": "tests/"
         }
-    },	
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -41,5 +44,18 @@
             ]
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable",
+    "suggest": {
+        "illuminate/support": "Required only for the optional Laravel service provider (^12.0 || ^13.0)."
+    },
+    "bin": [
+        "bin/hash-generator"
+    ],
+    "scripts": {
+        "test": "phpunit",
+        "lint": "php tools/lint.php"
+    },
+    "config": {
+        "sort-packages": true
+    }
 }
